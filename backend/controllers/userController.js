@@ -22,10 +22,11 @@ async function UserSignup(req, res) {
     const newUser = await User.create({ email, password: hashedPassword });
 
     const token = setUser(newUser);
-    res.cookie("uid", token, { httpOnly: true, sameSite: "strict", maxAge });
+    // res.cookie("uid", token, { httpOnly: true, sameSite: "strict", maxAge });
 
     return res.status(201).json({
       user: { id: newUser._id, email: newUser.email },
+      token,
     });
   } catch (error) {
     console.log(error);
@@ -49,9 +50,9 @@ async function UserLogin(req, res) {
       return res.status(400).send("Incorrect password");
     }
     const token = setUser(user);
-    res.cookie("uid", token, { httpOnly: true, sameSite: "strict", maxAge });
+    // res.cookie("uid", token, { httpOnly: true, sameSite: "strict", maxAge });
 
-    return res.status(200).json({ userdata: user });
+    return res.status(200).json({ userdata: user,token });
   } catch (error) {
     console.log(error);
     return res.status(500).send("Sorry Internal Server Error !");

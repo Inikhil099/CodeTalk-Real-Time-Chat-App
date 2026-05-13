@@ -61,6 +61,7 @@ const AuthPage = () => {
         });
         if (response.data.userdata._id) {
           dispatch(setUserInfo(response.data.userdata));
+          localStorage.setItem("authtoken", response.data.token);
 
           if (response.data.userdata.profileSetup) {
             navigate("/chat");
@@ -70,7 +71,7 @@ const AuthPage = () => {
         }
       }
     } catch (error) {
-      toast.error(error.response.data)
+      toast.error(error.response.data);
     }
   };
 
@@ -83,11 +84,12 @@ const AuthPage = () => {
         });
         if (response.status === 201) {
           dispatch(setUserInfo(response.data.user));
+          localStorage.setItem("authtoken",response.data.token)
           navigate("/profile");
         }
       }
     } catch (error) {
-      toast.error(error.response.data)
+      toast.error(error.response.data);
     }
   };
 
