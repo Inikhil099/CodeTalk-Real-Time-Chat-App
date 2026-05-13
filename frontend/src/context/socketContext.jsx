@@ -6,7 +6,7 @@ import {
 import { createContext, useContext, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { io } from "socket.io-client";
-const backend_url = "https://entirely-consist-dedicated-apparel.trycloudflare.com";
+const backend_url = "https://commented-sets-future-opposed.trycloudflare.com";
 
 const SocketContext = createContext(null);
 
