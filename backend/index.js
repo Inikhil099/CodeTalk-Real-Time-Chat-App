@@ -30,15 +30,14 @@ app.use(
   }),
 );
 
-
-setInterval(
-  async () => {
-    const f = await fetch(`${process.env.ORIGIN}/health`);
-    const data = await f.text()
-    console.log(data);
-  },
-  1000 * 60 * 10,
-);
+// setInterval(
+//   async () => {
+//     const f = await fetch(`${process.env.ORIGIN}/health`);
+//     const data = await f.text()
+//     console.log(data);
+//   },
+//   1000 * 60 * 10,
+// );
 
 app.use("/uploads/profiles", express.static("uploads/profiles"));
 app.use("/uploads/files", express.static("uploads/files"));
