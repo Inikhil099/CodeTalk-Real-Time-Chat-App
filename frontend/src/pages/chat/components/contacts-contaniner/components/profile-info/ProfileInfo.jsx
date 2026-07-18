@@ -25,6 +25,7 @@ function ProfileInfo() {
       const res = await backend_url.post(`/user/logout`, {});
       if (res.status == 200) {
         dispatch(setUserInfo(null));
+        localStorage.removeItem("authtoken");
         navigate("/auth");
         toast.success("Logged Out Successfully");
       }
